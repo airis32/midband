@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>걸밴드 뮤직비디오 미드저니 프롬프트 생성기</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>걸밴드 뮤직비디오 프롬프트 생성기</h1>
+            <div class="aspect-ratio-selector">
+                <label>비율 선택:</label>
+                <input type="radio" id="ratio-16-9" name="aspectRatio" value="16:9" checked>
+                <label for="ratio-16-9">16:9</label>
+                <input type="radio" id="ratio-4-3" name="aspectRatio" value="4:3">
+                <label for="ratio-4-3">4:3</label>
+                <input type="radio" id="ratio-1-1" name="aspectRatio" value="1:1">
+                <label for="ratio-1-1">1:1</label>
+                <input type="radio" id="ratio-3-4" name="aspectRatio" value="3:4">
+                <label for="ratio-3-4">3:4</label>
+                <input type="radio" id="ratio-9-16" name="aspectRatio" value="9:16">
+                <label for="ratio-9-16">9:16</label>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="chat-section">
+                    <h3>채팅</h3>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message system">
+                            <span class="timestamp"></span>
+                            <span class="content">걸밴드 뮤직비디오 프롬프트 생성기에 오신 걸 환영합니다! 1분마다 자동으로 새로운 프롬프트가 생성됩니다.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-section">
+                    <h3>프롬프트 요청</h3>
+                    <div class="input-group">
+                        <textarea id="promptRequest" placeholder="원하는 장면이나 컨셉을 입력하세요 (예: 네온사인이 있는 도시 배경에서 춤추는 장면)"></textarea>
+                        <button id="generateBtn">프롬프트 생성</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="history-section">
+                    <h3>프롬프트 히스토리</h3>
+                    <div class="auto-timer">
+                        다음 자동 생성까지: <span id="countdown">60</span>초
+                    </div>
+                    <div class="history-list" id="historyList">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
