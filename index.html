@@ -23,6 +23,15 @@
                 <input type="radio" id="ratio-9-16" name="aspectRatio" value="9:16">
                 <label for="ratio-9-16">9:16</label>
             </div>
+            
+            <div class="api-settings">
+                <div class="api-input-group">
+                    <label for="claudeApiKey">Claude API 키:</label>
+                    <input type="password" id="claudeApiKey" placeholder="Claude API 키를 입력하세요" />
+                    <button id="saveApiKey">저장</button>
+                    <span id="apiStatus" class="api-status"></span>
+                </div>
+            </div>
         </header>
 
         <div class="main-content">
@@ -48,9 +57,20 @@
 
             <div class="right-panel">
                 <div class="history-section">
-                    <h3>프롬프트 히스토리</h3>
+                    <div class="history-header">
+                        <h3>프롬프트 히스토리</h3>
+                        <div class="history-controls">
+                            <button id="clearHistoryBtn" class="history-btn clear-btn">전체 삭제</button>
+                            <button id="exportHistoryBtn" class="history-btn export-btn">내보내기</button>
+                            <button id="importHistoryBtn" class="history-btn import-btn">가져오기</button>
+                            <input type="file" id="importFile" accept=".json" style="display: none;">
+                        </div>
+                    </div>
                     <div class="auto-timer">
                         다음 자동 생성까지: <span id="countdown">60</span>초
+                    </div>
+                    <div class="history-stats">
+                        총 <span id="historyCount">0</span>개의 프롬프트가 저장됨
                     </div>
                     <div class="history-list" id="historyList">
                     </div>

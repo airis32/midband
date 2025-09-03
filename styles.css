@@ -68,6 +68,68 @@ header h1 {
     color: white;
 }
 
+.api-settings {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+}
+
+.api-input-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.api-input-group label {
+    font-weight: bold;
+    color: #764ba2;
+    min-width: 100px;
+}
+
+#claudeApiKey {
+    flex: 1;
+    min-width: 200px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+#saveApiKey {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+#saveApiKey:hover {
+    background: #218838;
+}
+
+.api-status {
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.api-status.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.api-status.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
 .main-content {
     display: flex;
     gap: 20px;
@@ -193,6 +255,68 @@ header h1 {
     min-height: 200px; /* Ensures a minimum height */
 }
 
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.history-controls {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.history-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.clear-btn {
+    background: #dc3545;
+    color: white;
+}
+
+.clear-btn:hover {
+    background: #c82333;
+}
+
+.export-btn {
+    background: #17a2b8;
+    color: white;
+}
+
+.export-btn:hover {
+    background: #138496;
+}
+
+.import-btn {
+    background: #28a745;
+    color: white;
+}
+
+.import-btn:hover {
+    background: #218838;
+}
+
+.history-stats {
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background: #f8f9fa;
+    border-radius: 15px;
+    text-align: center;
+}
+
 .auto-timer {
     background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
     color: #333;
@@ -253,6 +377,40 @@ header h1 {
 
 .history-item .copy-btn:hover {
     background: #45a049;
+}
+
+.history-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.history-item-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.delete-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    line-height: 1;
+}
+
+.delete-btn:hover {
+    background: #c82333;
 }
 
 /* --- Media Queries for improved responsiveness --- */
