@@ -42,7 +42,7 @@ header h1 {
     align-items: center;
     justify-content: center;
     gap: 15px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Added for better wrapping */
 }
 
 .aspect-ratio-selector label:first-child {
@@ -82,6 +82,8 @@ header h1 {
 
 .right-panel {
     flex: 1;
+    display: flex; /* Added for better internal layout */
+    flex-direction: column; /* Added for better internal layout */
 }
 
 .chat-section, .input-section, .history-section {
@@ -110,6 +112,7 @@ header h1 {
     border-radius: 10px;
     padding: 15px;
     background: #f9f9f9;
+    min-height: 200px; /* Ensures a minimum height on mobile */
     max-height: 300px;
 }
 
@@ -117,6 +120,7 @@ header h1 {
     margin-bottom: 15px;
     padding: 10px;
     border-radius: 8px;
+    word-break: break-word; /* Added for long messages */
 }
 
 .message.system {
@@ -180,7 +184,7 @@ header h1 {
 }
 
 .history-section {
-    height: calc(100vh - 200px);
+    flex: 1; /* Allows the history panel to fill available space */
     display: flex;
     flex-direction: column;
 }
@@ -212,6 +216,7 @@ header h1 {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     border-left: 4px solid #764ba2;
     transition: transform 0.2s;
+    word-break: break-word; /* Prevents long prompts from overflowing */
 }
 
 .history-item:hover {
@@ -228,7 +233,6 @@ header h1 {
 .history-item .prompt {
     color: #333;
     line-height: 1.5;
-    word-break: break-word;
 }
 
 .history-item .copy-btn {
@@ -247,17 +251,63 @@ header h1 {
     background: #45a049;
 }
 
-@media (max-width: 768px) {
+/* --- Media Queries for improved responsiveness --- */
+
+/* Small desktop and large tablets */
+@media (max-width: 1200px) {
+    .container {
+        padding: 15px;
+    }
+    header h1 {
+        font-size: 2.2em;
+    }
+}
+
+/* Tablets and below */
+@media (max-width: 992px) {
     .main-content {
         flex-direction: column;
+        gap: 15px;
     }
-    
-    .aspect-ratio-selector {
-        flex-direction: column;
-        gap: 10px;
+    .left-panel, .right-panel {
+        flex: none;
+        width: 100%;
     }
-    
     header h1 {
         font-size: 2em;
+    }
+    .aspect-ratio-selector {
+        gap: 10px;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    header {
+        padding: 15px;
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+    .chat-messages, .history-list {
+        max-height: 250px; /* Adjusted for smaller screens */
+    }
+    .chat-section, .input-section, .history-section {
+        padding: 15px;
+    }
+}
+
+/* Smaller mobile devices */
+@media (max-width: 576px) {
+    header h1 {
+        font-size: 1.5em;
+    }
+    .aspect-ratio-selector label {
+        padding: 3px 8px;
+        font-size: 0.9em;
+    }
+    .input-group #generateBtn {
+        padding: 12px 20px;
+        font-size: 14px;
     }
 }
