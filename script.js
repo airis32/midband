@@ -56,58 +56,61 @@ class PromptGenerator {
 
     generateRandomPrompt() {
         const scenes = [
-            '화려한 네온사인이 번쩍이는 도시 밤거리에서 걸밴드가 군무를 추는 장면',
-            '분홍색과 보라색 조명이 가득한 지하 클럽에서 걸밴드가 공연하는 모습',
-            '거대한 LED 스크린 앞에서 메탈릭 의상을 입은 걸밴드가 춤추는 장면',
-            '옥상 헬기장에서 석양을 배경으로 걸밴드가 노래하는 드라마틱한 장면',
-            '미러볼이 반짝이는 디스코 클럽에서 레트로 의상을 입은 걸밴드의 퍼포먼스',
-            '사막의 오아시스에서 화이트 드레스를 입은 걸밴드가 춤추는 환상적인 장면',
-            '폐공장에서 그런지 스타일 의상으로 파워풀하게 퍼포먼스하는 걸밴드',
-            '수영장 파티에서 비키니와 파레오를 입고 여름 바이브로 노래하는 걸밴드',
-            '눈 내리는 겨울 도시에서 퍼 코트를 입고 감성적으로 노래하는 걸밴드',
-            '벚꽃이 만개한 공원에서 한복을 현대적으로 재해석한 의상으로 춤추는 걸밴드'
+            'rock-style K-pop girl group performing on stage with electric guitars, bass, and drums in neon-lit underground venue',
+            'four-member girl band in edgy streetwear performing choreographed dance routine on rooftop with city skyline',
+            'alternative K-pop group with colorful hair in school uniforms playing instruments in abandoned classroom',
+            'rock girl group in leather jackets and ripped jeans performing in garage with graffiti walls',
+            'indie girl band members with unique fashion styles dancing in retro arcade filled with neon games',
+            'alternative K-pop quartet in oversized hoodies and platform boots performing in cyberpunk alley',
+            'rock-influenced girl group with bold makeup and accessories performing in warehouse with industrial lighting',
+            'four girls in mix-and-match punk-inspired outfits performing synchronized choreography in subway station',
+            'alternative girl band in vintage band t-shirts and mini skirts playing on outdoor festival stage',
+            'rock-style K-pop group with statement jewelry and boots performing in converted shipping container venue'
         ];
 
         const styles = [
-            'holographic sparkles and glitter effects',
-            'cinematic lighting with dramatic shadows',
-            'vibrant neon colors and electric atmosphere',
-            'soft pastel tones with dreamy bokeh effects',
-            'high fashion editorial style photography',
-            'retro 80s synthwave aesthetic',
-            'minimalist clean background',
-            'explosive colorful paint splashes',
-            'ethereal fog and mist effects',
-            'geometric patterns and modern architecture'
+            'moody dramatic lighting with purple and blue neon accents, sharp contrasts and deep shadows',
+            'vibrant pop-punk aesthetic with electric pink, cyan, and yellow color palette, high saturation',
+            'cinematic music video style with dynamic camera movements and film grain texture',
+            'retro-futuristic vibe with holographic effects, chrome details, and synthwave color scheme',
+            'urban streetwear fashion photography style with natural lighting and candid expressions',
+            'alternative rock concert atmosphere with smoky haze, stage lights, and energetic crowd',
+            'indie film aesthetic with warm analog tones, soft focus, and nostalgic mood',
+            'high-contrast black and white with selective color pops in accessories and hair',
+            'dreamy surreal atmosphere with floating elements, pastel gradients, and ethereal glow',
+            'gritty underground music scene with exposed brick, metal textures, and raw industrial elements'
         ];
 
         const cameraAngles = [
-            'wide shot capturing the full choreography',
-            'dynamic low angle shot looking up',
-            'overhead bird\'s eye view of the formation',
-            'close-up focus on expressive faces',
-            'tracking shot following the movement',
-            'Dutch angle for dramatic effect',
-            'split screen showing multiple perspectives'
+            'dynamic low angle shot emphasizing power and attitude, tilted composition',
+            'close-up portrait shots showcasing individual member personalities and styling',
+            'wide establishing shot capturing full group formation and venue atmosphere',
+            'tracking shot following dance movements with smooth camera motion',
+            'overhead bird\'s eye view showing intricate choreography patterns',
+            'handheld documentary style capturing authentic behind-the-scenes energy',
+            'split-screen montage showing multiple perspectives simultaneously',
+            'macro detail shots of instruments, accessories, and fashion elements',
+            'Dutch angle creating visual tension and dynamic composition'
         ];
 
-        const moods = [
-            'fierce and powerful',
-            'elegant and graceful',
-            'playful and energetic',
-            'mysterious and seductive',
-            'fresh and youthful',
-            'sophisticated and mature',
-            'rebellious and edgy'
+        const characteristics = [
+            'each member has distinct personal style - one in oversized blazer, one in crop top, one in band tee, one in leather jacket',
+            'diverse hair colors including platinum blonde, cherry red, midnight blue, and natural black with colored streaks',
+            'mix of feminine and androgynous styling with combat boots, chunky sneakers, and statement accessories',
+            'authentic musician vibes with members actually holding and playing electric guitars, bass, and drumsticks',
+            'confident stage presence with fierce expressions, bold makeup, and powerful body language',
+            'youthful energy combined with rebellious attitude, mixing cute and cool elements seamlessly',
+            'individual personalities shining through - leader type, cute maknae, cool guitarist, charismatic vocalist',
+            'fashion-forward styling mixing high-end pieces with vintage band merch and streetwear brands'
         ];
 
         const scene = scenes[Math.floor(Math.random() * scenes.length)];
         const style = styles[Math.floor(Math.random() * styles.length)];
         const camera = cameraAngles[Math.floor(Math.random() * cameraAngles.length)];
-        const mood = moods[Math.floor(Math.random() * moods.length)];
+        const characteristic = characteristics[Math.floor(Math.random() * characteristics.length)];
         const aspectRatio = this.getSelectedAspectRatio();
 
-        const prompt = `${scene}, ${style}, ${camera}, ${mood} atmosphere, professional music video quality, 4K resolution, --ar ${aspectRatio} --v 6`;
+        const prompt = `${scene}, ${characteristic}, ${style}, ${camera}, professional music video quality, ultra-detailed, photorealistic, 8K resolution, --ar ${aspectRatio} --v 6`;
 
         this.addPromptToHistory(prompt);
         this.addChatMessage('새로운 랜덤 프롬프트가 생성되었습니다!');
@@ -118,7 +121,7 @@ class PromptGenerator {
     generateCustomPrompt(request) {
         const aspectRatio = this.getSelectedAspectRatio();
         
-        const enhancedPrompt = `K-pop girl group music video scene: ${request}, professional cinematography, dynamic lighting, high fashion styling, vibrant colors, 4K quality, --ar ${aspectRatio} --v 6`;
+        const enhancedPrompt = `Rock-style K-pop girl group like QWER music video scene: ${request}, four members with distinct individual styling, alternative fashion with mix of edgy and cute elements, authentic musician vibes with instruments, professional cinematography, dynamic lighting, ultra-detailed, photorealistic, 8K quality, --ar ${aspectRatio} --v 6`;
         
         this.addPromptToHistory(enhancedPrompt, request);
         this.addChatMessage(`"${request}"에 대한 맞춤 프롬프트가 생성되었습니다!`, true);
