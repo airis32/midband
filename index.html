@@ -3,25 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>걸밴드 뮤직비디오 미드저니 프롬프트 생성기</title>
+    <title>AI 이미지 프롬프트 생성기</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>걸밴드 뮤직비디오 프롬프트 생성기</h1>
-            <div class="aspect-ratio-selector">
-                <label>비율 선택:</label>
-                <input type="radio" id="ratio-16-9" name="aspectRatio" value="16:9" checked>
-                <label for="ratio-16-9">16:9</label>
-                <input type="radio" id="ratio-4-3" name="aspectRatio" value="4:3">
-                <label for="ratio-4-3">4:3</label>
-                <input type="radio" id="ratio-1-1" name="aspectRatio" value="1:1">
-                <label for="ratio-1-1">1:1</label>
-                <input type="radio" id="ratio-3-4" name="aspectRatio" value="3:4">
-                <label for="ratio-3-4">3:4</label>
-                <input type="radio" id="ratio-9-16" name="aspectRatio" value="9:16">
-                <label for="ratio-9-16">9:16</label>
+            <h1>AI 이미지 프롬프트 생성기</h1>
+            
+            <div class="settings-row">
+                <div class="model-selector">
+                    <label>이미지 생성 모델:</label>
+                    <select id="aiModel">
+                        <option value="midjourney" selected>Midjourney</option>
+                        <option value="stable-diffusion">Stable Diffusion</option>
+                        <option value="novelai">NovelAI</option>
+                        <option value="dall-e">DALL-E</option>
+                        <option value="leonardo">Leonardo AI</option>
+                    </select>
+                </div>
+                
+                <div class="aspect-ratio-selector">
+                    <label>비율 선택:</label>
+                    <input type="radio" id="ratio-16-9" name="aspectRatio" value="16:9" checked>
+                    <label for="ratio-16-9">16:9</label>
+                    <input type="radio" id="ratio-4-3" name="aspectRatio" value="4:3">
+                    <label for="ratio-4-3">4:3</label>
+                    <input type="radio" id="ratio-1-1" name="aspectRatio" value="1:1">
+                    <label for="ratio-1-1">1:1</label>
+                    <input type="radio" id="ratio-3-4" name="aspectRatio" value="3:4">
+                    <label for="ratio-3-4">3:4</label>
+                    <input type="radio" id="ratio-9-16" name="aspectRatio" value="9:16">
+                    <label for="ratio-9-16">9:16</label>
+                </div>
+            </div>
+            
+            <div class="api-settings">
+                <div class="api-input-group">
+                    <label for="claudeApiKey">Claude API 키:</label>
+                    <input type="password" id="claudeApiKey" placeholder="Claude API 키를 입력하세요" />
+                    <button id="saveApiKey">저장</button>
+                    <span id="apiStatus" class="api-status"></span>
+                </div>
             </div>
         </header>
 
@@ -32,25 +55,40 @@
                     <div class="chat-messages" id="chatMessages">
                         <div class="message system">
                             <span class="timestamp"></span>
-                            <span class="content">걸밴드 뮤직비디오 프롬프트 생성기에 오신 걸 환영합니다! 1분마다 자동으로 새로운 프롬프트가 생성됩니다.</span>
+                            <span class="content">AI 이미지 프롬프트 생성기에 오신 걸 환영합니다! 키워드를 입력하면 선택한 모델에 최적화된 프롬프트를 생성해드립니다.</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="input-section">
-                    <h3>프롬프트 요청</h3>
+                    <h3>키워드 입력</h3>
                     <div class="input-group">
-                        <textarea id="promptRequest" placeholder="원하는 장면이나 컨셉을 입력하세요 (예: 네온사인이 있는 도시 배경에서 춤추는 장면)"></textarea>
-                        <button id="generateBtn">프롬프트 생성</button>
+                        <textarea id="promptRequest" placeholder="생성하고 싶은 이미지의 키워드를 입력하세요 (예: 신비로운 숲, 사이버펑크 도시, 드래곤, 빈티지 카페 등)"></textarea>
+                        <div class="generate-controls">
+                            <button id="generateBtn">프롬프트 생성</button>
+                            <div class="auto-generate">
+                                <input type="checkbox" id="autoGenerate">
+                                <label for="autoGenerate">1분마다 자동 생성</label>
+                                <span id="countdown" class="countdown-display">60초</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="right-panel">
                 <div class="history-section">
-                    <h3>프롬프트 히스토리</h3>
-                    <div class="auto-timer">
-                        다음 자동 생성까지: <span id="countdown">60</span>초
+                    <div class="history-header">
+                        <h3>프롬프트 히스토리</h3>
+                        <div class="history-controls">
+                            <button id="clearHistoryBtn" class="history-btn clear-btn">전체 삭제</button>
+                            <button id="exportHistoryBtn" class="history-btn export-btn">내보내기</button>
+                            <button id="importHistoryBtn" class="history-btn import-btn">가져오기</button>
+                            <input type="file" id="importFile" accept=".json" style="display: none;">
+                        </div>
+                    </div>
+                    <div class="history-stats">
+                        총 <span id="historyCount">0</span>개의 프롬프트가 저장됨
                     </div>
                     <div class="history-list" id="historyList">
                     </div>
