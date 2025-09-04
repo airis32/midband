@@ -319,7 +319,68 @@ Generate only the prompt text, no additional explanation.`;
             '젖은': 'wet',
             '물놀이': 'water play',
             '수영복': 'swimwear',
-            '비키니': 'bikini'
+            '비키니': 'bikini',
+            
+            // 판타지/마법
+            '환타지': 'fantasy',
+            '판타지': 'fantasy',
+            '마법': 'magic',
+            '마법사': 'wizard',
+            '마녀': 'witch',
+            '용': 'dragon',
+            '드래곤': 'dragon',
+            '요정': 'fairy',
+            '엘프': 'elf',
+            '왕국': 'kingdom',
+            '성': 'castle',
+            '기사': 'knight',
+            '검': 'sword',
+            '갑옷': 'armor',
+            '마법의': 'magical',
+            '신비로운': 'mysterious',
+            '신비한': 'mystical',
+            '환상적인': 'fantastic',
+            
+            // 자연
+            '숲': 'forest',
+            '나무': 'tree',
+            '꽃': 'flower',
+            '하늘': 'sky',
+            '구름': 'cloud',
+            '별': 'star',
+            '달': 'moon',
+            '태양': 'sun',
+            '강': 'river',
+            '호수': 'lake',
+            '폭포': 'waterfall',
+            '동물': 'animal',
+            '새': 'bird',
+            '고양이': 'cat',
+            '개': 'dog',
+            
+            // 사이버펑크/SF
+            '사이버펑크': 'cyberpunk',
+            '사이버': 'cyber',
+            '로봇': 'robot',
+            '미래': 'futuristic',
+            '미래적인': 'futuristic',
+            'SF': 'science fiction',
+            '우주': 'space',
+            '외계인': 'alien',
+            '홀로그램': 'hologram',
+            '네온사인': 'neon sign',
+            
+            // 감정/분위기
+            '행복한': 'happy',
+            '슬픈': 'sad',
+            '무서운': 'scary',
+            '평화로운': 'peaceful',
+            '고요한': 'serene',
+            '역동적인': 'dynamic',
+            '활기찬': 'vibrant',
+            '차분한': 'calm',
+            '격렬한': 'intense',
+            '부드러운': 'gentle'
         };
         
         let englishText = koreanText;
