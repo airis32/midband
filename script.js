@@ -426,40 +426,150 @@ Generate only the prompt text, no additional explanation.`;
 
     getModelSpecificSystemPrompt(model) {
         const modelPrompts = {
-            'midjourney': `Create a detailed Midjourney prompt optimized for photorealistic image generation. Focus on:
-- Cinematic composition and lighting
-- Specific camera angles and photography techniques
-- Art styles and aesthetic qualities
-- Technical parameters (--ar, --v, --style, etc.)
-- Rich visual descriptions of characters, environments, mood, and atmosphere`,
+            'midjourney': `Create a highly detailed Midjourney prompt with exceptional artistic and technical precision. Include:
 
-            'stable-diffusion': `Create a detailed Stable Diffusion prompt optimized for high-quality image generation. Focus on:
-- Quality modifiers (masterpiece, best quality, ultra high res)
-- Detailed character descriptions and environments
-- Lighting and composition techniques
-- Art style specifications
-- Negative space considerations for optimal results`,
+COMPOSITION & FRAMING:
+- Rule of thirds, golden ratio, symmetry, or dynamic asymmetry
+- Camera angles: low-angle, high-angle, Dutch tilt, bird's eye, worm's eye
+- Shot types: extreme wide, wide, medium, close-up, extreme close-up
+- Depth of field: shallow/deep focus, bokeh effects
 
-            'novelai': `Create a detailed NovelAI prompt using their tag-based system. Focus on:
-- Quality tags in curly braces {masterpiece, best quality}
-- Character and environment descriptions
-- Art style and aesthetic tags
-- Composition and lighting descriptors
-- Mood and atmosphere elements`,
+LIGHTING & MOOD:
+- Light sources: golden hour, blue hour, rim lighting, backlighting, side lighting
+- Light quality: soft, hard, diffused, dramatic chiaroscuro, volumetric lighting
+- Color temperature: warm/cool tones, color harmony, complementary colors
+- Atmospheric effects: fog, mist, dust particles, god rays
 
-            'dall-e': `Create a clear, descriptive DALL-E prompt focusing on:
-- Natural language descriptions
-- Specific visual details
-- Photography and composition terms
-- Art styles and techniques
-- Clear subject and background descriptions`,
+ARTISTIC STYLE & TECHNIQUE:
+- Photography styles: portrait, landscape, macro, street photography
+- Artistic movements: impressionism, realism, surrealism, art nouveau
+- Visual techniques: leading lines, negative space, patterns, textures
+- Post-processing effects: film grain, vintage, HDR, long exposure
 
-            'leonardo': `Create a detailed Leonardo AI prompt optimized for their models. Focus on:
-- Cinematic and photorealistic qualities
-- Detailed character and environment descriptions
-- Professional photography techniques
-- Lighting and mood specifications
-- High-quality technical descriptors`
+TECHNICAL SPECIFICATIONS:
+- Camera equipment: DSLR, mirrorless, specific lens types (85mm, 24-70mm)
+- Settings: aperture (f/1.4, f/2.8), ISO, shutter speed implications
+- Midjourney parameters: --ar, --v 6, --style, --chaos, --stylize values
+
+Generate prompts with rich sensory details, specific materials, textures, and emotional resonance.`,
+
+            'stable-diffusion': `Create a comprehensive Stable Diffusion prompt with artistic mastery. Include:
+
+QUALITY & STYLE MODIFIERS:
+- Primary: masterpiece, best quality, ultra high res, photorealistic, 8k uhd
+- Artistic: oil painting, watercolor, digital art, concept art, matte painting
+- Technical: sharp focus, highly detailed, professional, award-winning
+
+VISUAL COMPOSITION:
+- Rule of thirds, leading lines, symmetrical/asymmetrical balance
+- Foreground, middle ground, background layering
+- Negative space utilization, visual weight distribution
+
+LIGHTING MASTERY:
+- Studio lighting: softbox, key light, fill light, rim light
+- Natural lighting: golden hour, overcast, dappled sunlight
+- Dramatic lighting: chiaroscuro, Rembrandt lighting, split lighting
+- Color grading: warm/cool tones, color harmony, saturation levels
+
+TEXTURE & MATERIAL DETAILS:
+- Fabric: silk, velvet, linen, leather textures
+- Surface: rough, smooth, glossy, matte finishes
+- Environmental: weathered, pristine, organic, manufactured
+- Skin/hair: detailed pores, hair strands, realistic subsurface scattering
+
+CAMERA & LENS SPECIFICATIONS:
+- Lens effects: bokeh, depth of field, focal length characteristics
+- Camera types: DSLR, medium format, film photography aesthetics
+- Technical aspects: grain, noise, color reproduction
+
+Focus on painterly qualities and artistic interpretation while maintaining technical precision.`,
+
+            'novelai': `Create a detailed NovelAI prompt using their tag-based system with artistic sophistication:
+
+QUALITY TAGS (Use {} format):
+{masterpiece}, {best quality}, {amazing quality}, {very aesthetic}
+{ultra-detailed}, {high resolution}, {perfect anatomy}
+
+ARTISTIC STYLE TAGS:
+- Art movements: {impressionist}, {baroque}, {art nouveau}, {ukiyo-e}
+- Medium: {oil painting}, {watercolor}, {digital painting}, {traditional media}
+- Artist inspiration: {studio ghibli}, {makoto shinkai}, {alphonse mucha}
+
+COMPOSITION & VISUAL STRUCTURE:
+- Layout: {rule of thirds}, {symmetrical composition}, {dynamic pose}
+- Depth: {depth of field}, {bokeh}, {atmospheric perspective}
+- Framing: {close-up}, {wide shot}, {dutch angle}, {from below}
+
+LIGHTING & ATMOSPHERE:
+- Light quality: {soft lighting}, {dramatic lighting}, {rim lighting}
+- Time of day: {golden hour}, {blue hour}, {sunset}, {moonlight}
+- Mood: {warm colors}, {cool colors}, {high contrast}, {ethereal}
+
+CHARACTER & ENVIRONMENT DETAILS:
+- Detailed descriptions: {detailed eyes}, {flowing hair}, {intricate clothing}
+- Materials: {silk}, {metal armor}, {translucent fabric}, {weathered stone}
+- Environmental: {lush forest}, {ancient architecture}, {magical atmosphere}
+
+Focus on anime/illustration aesthetics with rich visual storytelling elements.`,
+
+            'dall-e': `Create a natural, descriptive DALL-E prompt with artistic depth:
+
+VISUAL STORYTELLING:
+- Scene setting with rich environmental context
+- Character positioning and interaction with environment
+- Narrative elements that suggest story or emotion
+
+ARTISTIC TECHNIQUE DESCRIPTIONS:
+- Photography styles: "shot with professional camera", "studio photography"
+- Artistic mediums: "oil painting style", "watercolor technique", "digital illustration"
+- Historical art references: "in the style of Renaissance masters", "Art Deco influence"
+
+DETAILED VISUAL ELEMENTS:
+- Lighting descriptions: "soft natural lighting from large window", "dramatic spotlight"
+- Color palettes: "warm earth tones", "cool blue and silver palette", "vibrant saturated colors"
+- Texture descriptions: "rough stone walls", "flowing silk fabric", "weathered metal surfaces"
+- Atmospheric qualities: "misty morning atmosphere", "golden dust particles in air"
+
+COMPOSITION GUIDANCE:
+- Spatial relationships: "positioned in foreground with blurred background"
+- Visual balance: "asymmetrical composition with strong focal point"
+- Scale and proportion: "towering architecture dwarfing human figures"
+
+Use natural language flow while being highly specific about visual and artistic elements.`,
+
+            'leonardo': `Create a comprehensive Leonardo AI prompt emphasizing cinematic and photorealistic qualities:
+
+CINEMATIC EXCELLENCE:
+- Camera work: tracking shots, crane shots, steadicam movement implications
+- Cinematography: film noir lighting, blockbuster epic scale, indie film intimacy
+- Color grading: Hollywood production values, specific color palettes
+- Mood board references: specific films, directors, or cinematographers
+
+PHOTOGRAPHIC MASTERY:
+- Professional equipment: RED camera, ARRI Alexa, specific lens characteristics
+- Technical specs: anamorphic lenses, film grain, color science
+- Lighting setup: three-point lighting, practical lights, motivated lighting
+- Post-production: color correction, visual effects integration
+
+ARTISTIC COMPOSITION:
+- Visual hierarchy: primary, secondary, tertiary focal points
+- Geometric principles: golden ratio, triangular composition, spiral composition
+- Environmental storytelling through visual elements
+- Character positioning and environmental interaction
+
+MATERIAL & TEXTURE REALISM:
+- Subsurface scattering for skin, translucent materials
+- Physically-based rendering characteristics
+- Weather effects: rain droplets, snow accumulation, wind effects
+- Aging and wear patterns on objects and environments
+
+EMOTIONAL & ATMOSPHERIC DEPTH:
+- Psychological lighting to convey mood
+- Environmental psychology through space design
+- Cultural and historical authenticity in details
+- Sensory implications through visual cues
+
+Generate prompts that could serve as detailed shot lists for high-end film production.`
         };
 
         return modelPrompts[model] || modelPrompts['midjourney'];
@@ -484,23 +594,118 @@ Generate only the prompt text, no additional explanation.`;
             const modelSystemPrompt = this.getModelSpecificSystemPrompt(selectedModel);
             const claudePrompt = `${modelSystemPrompt}
 
-User request: "${request}"
-Selected model: ${selectedModel}
+User keywords: "${request}"
+Target model: ${selectedModel}
 Aspect ratio: ${aspectRatio}
 
-Create a detailed image generation prompt that:
-1. Interprets the user's keywords creatively for ${selectedModel}
-2. Includes rich visual descriptions (character, background, composition, lighting, colors, mood)
-3. Uses appropriate technical parameters for ${selectedModel}
-4. Focuses on artistic and aesthetic elements
-5. If the request is in Korean, interpret it naturally and create an English prompt
+Create a masterful image generation prompt that transforms these keywords into a vivid, artistic vision:
 
-Generate only the prompt text optimized for ${selectedModel}, no additional explanation.`;
+REQUIREMENTS:
+1. Interpret keywords creatively with rich visual storytelling
+2. Include specific artistic elements: composition, lighting, color theory, texture
+3. Add technical photography/art details: camera settings, lens types, artistic techniques  
+4. Describe materials, surfaces, and atmospheric qualities in detail
+5. Incorporate emotional resonance and mood descriptors
+6. Use ${selectedModel}-specific syntax and parameters appropriately
+7. Ensure variety and creativity - avoid repetitive descriptions
+8. If keywords are in Korean, interpret naturally and generate English prompt
+
+ARTISTIC FOCUS AREAS:
+- Composition: framing, balance, visual hierarchy, depth layers
+- Lighting: quality, direction, color temperature, dramatic effects
+- Color palette: harmony, contrast, saturation, emotional impact  
+- Texture & materials: surface qualities, fabric, skin, environmental details
+- Atmosphere: weather, particles, environmental mood, time of day
+- Technical specs: camera angles, lens characteristics, post-processing effects
+
+Generate ONLY the final optimized prompt text for ${selectedModel}, with no explanations or meta-commentary.`;
 
             const aiPrompt = await this.callClaudeAPI(claudePrompt);
             
             this.addPromptToHistory(aiPrompt.trim(), request);
             this.addChatMessage(`AI가 "${request}" 키워드로 ${selectedModel}용 프롬프트를 생성했습니다!`, true);
+            
+            return aiPrompt.trim();
+        } catch (error) {
+            console.error('AI 프롬프트 생성 실패:', error);
+            this.addChatMessage('AI 생성 실패, 기본 프롬프트를 사용합니다.');
+            
+            // 폴백 처리
+            const translatedRequest = this.translateKoreanToEnglish(request);
+            const enhancedPrompt = this.generateFallbackPrompt(translatedRequest, aspectRatio, selectedModel);
+            
+            this.addPromptToHistory(enhancedPrompt, request);
+            this.addChatMessage(`"${request}"에 대한 기본 프롬프트가 생성되었습니다!`, true);
+            
+            return enhancedPrompt;
+        }
+    }
+
+    async generateVariedPrompt(request) {
+        const aspectRatio = this.getSelectedAspectRatio();
+        const selectedModel = this.getSelectedModel();
+        
+        if (!this.claudeApiKey) {
+            // 폴백: 기본 번역 및 모델별 프롬프트 생성
+            const translatedRequest = this.translateKoreanToEnglish(request);
+            const enhancedPrompt = this.generateFallbackPrompt(translatedRequest, aspectRatio, selectedModel);
+            
+            this.addPromptToHistory(enhancedPrompt, request);
+            this.addChatMessage(`"${request}"에 대한 새로운 ${selectedModel} 프롬프트가 생성되었습니다!`, true);
+            
+            return enhancedPrompt;
+        }
+
+        try {
+            const modelSystemPrompt = this.getModelSpecificSystemPrompt(selectedModel);
+            const variationPrompts = [
+                "Focus on dramatic cinematic lighting and bold composition",
+                "Emphasize fine art painting techniques and classical aesthetics", 
+                "Highlight modern photography with contemporary styling",
+                "Capture intimate portrait mood with soft, natural elements",
+                "Create epic wide-shot with environmental storytelling",
+                "Focus on macro details with rich texture emphasis",
+                "Emphasize color harmony with vibrant, saturated palette",
+                "Create moody, atmospheric scene with mysterious elements",
+                "Highlight architectural or geometric composition elements",
+                "Focus on dynamic action with motion and energy"
+            ];
+            
+            const randomVariation = variationPrompts[Math.floor(Math.random() * variationPrompts.length)];
+            
+            const claudePrompt = `${modelSystemPrompt}
+
+User keywords: "${request}"
+Target model: ${selectedModel}
+Aspect ratio: ${aspectRatio}
+Creative direction: ${randomVariation}
+
+Create a completely fresh and unique image generation prompt that interprets these keywords with artistic variety:
+
+VARIATION REQUIREMENTS:
+1. Generate a DIFFERENT artistic interpretation than typical responses
+2. ${randomVariation}
+3. Include unexpected creative elements and unique perspectives
+4. Vary the artistic style, mood, and technical approach significantly
+5. Use diverse vocabulary and avoid repetitive descriptions
+6. Incorporate different cultural or historical artistic references
+7. Add surprising but relevant details that enhance the concept
+8. Focus on ${selectedModel}-specific optimization
+
+ENSURE MAXIMUM VARIETY:
+- Different composition styles each time (close-up vs wide-shot, symmetrical vs asymmetrical)
+- Varying lighting conditions (natural vs artificial, soft vs dramatic)
+- Different time periods, seasons, or environmental conditions
+- Alternate artistic movements or photographic styles
+- Unique material textures and surface qualities
+- Different emotional tones and atmospheric moods
+
+Generate ONLY the final optimized prompt text for ${selectedModel}, ensuring it feels completely fresh and different from previous generations.`;
+
+            const aiPrompt = await this.callClaudeAPI(claudePrompt);
+            
+            this.addPromptToHistory(aiPrompt.trim(), request);
+            this.addChatMessage(`"${request}" 키워드로 새로운 변형 ${selectedModel}용 프롬프트를 생성했습니다!`, true);
             
             return aiPrompt.trim();
         } catch (error) {
@@ -691,7 +896,7 @@ Generate only the prompt text optimized for ${selectedModel}, no additional expl
             try {
                 const currentKeywords = document.getElementById('promptRequest').value.trim();
                 if (currentKeywords) {
-                    await this.generateCustomPrompt(currentKeywords);
+                    await this.generateVariedPrompt(currentKeywords);
                     this.resetCountdown();
                 } else {
                     this.addChatMessage('키워드가 없어 자동 생성을 중단합니다.');
